@@ -5,7 +5,7 @@ export default class DeckList extends React.Component {
   render() {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>DeckList</Text>
+        <Text>You are in DeckList Component</Text>
       </View>
     );
   }

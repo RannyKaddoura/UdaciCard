@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Button, Text, View } from 'react-native';
 import {
   createBottomTabNavigator,
@@ -8,21 +8,17 @@ import {
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import DeckList from './components/DeckList';
 
-class HomeScreen extends React.Component {
+class HomeScreen extends Component {
   render() {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <Text>You are in HomeScreen!</Text>
-        <Button
-          title="Go to Details"
-          onPress={() => this.props.navigation.navigate('Details')}
-        />
       </View>
     );
   }
 }
 
-class DetailsScreen extends React.Component {
+class DetailsScreen extends Component {
   render() {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -32,11 +28,10 @@ class DetailsScreen extends React.Component {
   }
 }
 
-class SettingsScreen extends React.Component {
+class SettingsScreen extends Component {
   render() {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        {/* other code from before here */}
         <Button
           title="Go to Details"
           onPress={() => this.props.navigation.navigate('Details')}
@@ -52,19 +47,39 @@ const HomeStack = createStackNavigator({
 });
 
 const SettingsStack = createStackNavigator({
-  Settings: SettingsScreen,
-  Details: DetailsScreen
+  Settings: SettingsScreen
 });
 
 export default createAppContainer(
   createBottomTabNavigator(
     {
       Home: HomeStack,
-      DeckList: DeckList,
+      Deck: DeckList,
       Settings: SettingsStack
     },
     {
-      /* Other configuration remains unchanged */
+      defaultNavigationOptions: ({ navigation }) => ({
+        tabBarIcon: ({ focused, horizontal, tintColor }) => {
+          const { routeName } = navigation.state;
+          let IconComponent = Ionicons;
+          let iconName;
+          if (routeName === 'Home') {
+            iconName = `ios-information-circle${focused ? '' : '-outline'}`;
+          }
+          else if (routeName === 'Deck') {
+            iconName = `ios-albums`;
+          }
+          else if (routeName === 'Settings') {
+            iconName = `ios-options`;
+          }
+
+          return <IconComponent name={iconName} size={25} color={tintColor} />;
+        }
+      }),
+      tabBarOptions: {
+        activeTintColor: 'tomato',
+        inactiveTintColor: 'gray'
+      }
     }
   )
 );
