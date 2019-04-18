@@ -12,7 +12,7 @@ class HomeScreen extends Component {
   render() {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>You are in HomeScreen!</Text>
+        <Text>You are in Decks!</Text>
       </View>
     );
   }
@@ -22,7 +22,7 @@ class DetailsScreen extends Component {
   render() {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Image resizeMode="center" source={require('./assets/test.jpg')} />
+        <Image resizeMode="center" style={styles.testImage} source={require('./assets/test.jpg')} />
         <Text>You are in Nabile </Text>
       </View>
     );
@@ -84,8 +84,7 @@ export default createAppContainer(
 );
 
 const styles = StyleSheet.create({
-  image: {
-    width: Dimensions.get('window').width,
-    overflow: 'visible'
+  testImage: {
+    height: 250
   }
 });
