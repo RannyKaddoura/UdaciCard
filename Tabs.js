@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Text, View } from 'react-native';
+import { Button, Text, View, Image, StyleSheet, Dimensions } from 'react-native';
 import {
   createBottomTabNavigator,
   createStackNavigator,
@@ -22,7 +22,8 @@ class DetailsScreen extends Component {
   render() {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>You are in Details!</Text>
+        <Image resizeMode="center" source={require('./assets/test.jpg')} />
+        <Text>You are in Nabile </Text>
       </View>
     );
   }
@@ -33,7 +34,7 @@ class SettingsScreen extends Component {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <Button
-          title="Go to Details"
+          title="Go to test"
           onPress={() => this.props.navigation.navigate('Details')}
         />
       </View>
@@ -64,12 +65,10 @@ export default createAppContainer(
           let IconComponent = Ionicons;
           let iconName;
           if (routeName === 'Home') {
-            iconName = `ios-information-circle${focused ? '' : '-outline'}`;
-          }
-          else if (routeName === 'Deck') {
+            iconName = `ios-home`;
+          } else if (routeName === 'Deck') {
             iconName = `ios-albums`;
-          }
-          else if (routeName === 'Settings') {
+          } else if (routeName === 'Settings') {
             iconName = `ios-options`;
           }
 
@@ -83,3 +82,10 @@ export default createAppContainer(
     }
   )
 );
+
+const styles = StyleSheet.create({
+  image: {
+    width: Dimensions.get('window').width,
+    overflow: 'visible'
+  }
+});
