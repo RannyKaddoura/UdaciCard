@@ -6,13 +6,14 @@ import {
   createAppContainer
 } from 'react-navigation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import DeckList from './components/DeckList';
+import Decks from './components/Decks';
+import AddDeck from './components/AddDeck';
 
 class HomeScreen extends Component {
   render() {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>You are in Decks!</Text>
+        <Text>You are in HomeScreen!</Text>
       </View>
     );
   }
@@ -22,8 +23,8 @@ class DetailsScreen extends Component {
   render() {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Image resizeMode="center" style={styles.testImage} source={require('./assets/test.jpg')} />
-        <Text>You are in Nabile </Text>
+        <Image resizeMode="center" source={require('./assets/test.jpg')} />
+        <Text>You are in DetailsScreen </Text>
       </View>
     );
   }
@@ -34,7 +35,7 @@ class SettingsScreen extends Component {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <Button
-          title="Go to test"
+          title="Go to Details"
           onPress={() => this.props.navigation.navigate('Details')}
         />
       </View>
@@ -43,7 +44,7 @@ class SettingsScreen extends Component {
 }
 
 const HomeStack = createStackNavigator({
-  Home: HomeScreen,
+  Decks: Decks,//HomeScreen,
   Details: DetailsScreen
 });
 
@@ -54,9 +55,9 @@ const SettingsStack = createStackNavigator({
 export default createAppContainer(
   createBottomTabNavigator(
     {
-      Home: HomeStack,
-      Deck: DeckList,
-      Settings: SettingsStack
+      Decks: HomeStack,
+      AddDeck: AddDeck,
+      //Settings: SettingsStack
     },
     {
       defaultNavigationOptions: ({ navigation }) => ({
@@ -64,10 +65,10 @@ export default createAppContainer(
           const { routeName } = navigation.state;
           let IconComponent = Ionicons;
           let iconName;
-          if (routeName === 'Home') {
-            iconName = `ios-home`;
-          } else if (routeName === 'Deck') {
+          if (routeName === 'Decks') {
             iconName = `ios-albums`;
+          } else if (routeName === 'AddDeck') {
+            iconName = `ios-add`;
           } else if (routeName === 'Settings') {
             iconName = `ios-options`;
           }
@@ -84,7 +85,8 @@ export default createAppContainer(
 );
 
 const styles = StyleSheet.create({
-  testImage: {
-    height: 250
+  image: {
+    width: Dimensions.get('window').width,
+    overflow: 'visible'
   }
 });
