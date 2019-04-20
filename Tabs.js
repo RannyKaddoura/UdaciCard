@@ -7,17 +7,9 @@ import {
 } from 'react-navigation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Decks from './components/Decks';
+import Deck from './components/Deck';
 import AddDeck from './components/AddDeck';
 
-class HomeScreen extends Component {
-  render() {
-    return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>You are in HomeScreen!</Text>
-      </View>
-    );
-  }
-}
 
 class DetailsScreen extends Component {
   render() {
@@ -30,34 +22,17 @@ class DetailsScreen extends Component {
   }
 }
 
-class SettingsScreen extends Component {
-  render() {
-    return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Button
-          title="Go to Details"
-          onPress={() => this.props.navigation.navigate('Details')}
-        />
-      </View>
-    );
-  }
-}
-
 const HomeStack = createStackNavigator({
   Decks: Decks,//HomeScreen,
-  Details: DetailsScreen
+  Deck: Deck
 });
 
-const SettingsStack = createStackNavigator({
-  Settings: SettingsScreen
-});
 
 export default createAppContainer(
   createBottomTabNavigator(
     {
       Decks: HomeStack,
-      AddDeck: AddDeck,
-      //Settings: SettingsStack
+      AddDeck: AddDeck
     },
     {
       defaultNavigationOptions: ({ navigation }) => ({

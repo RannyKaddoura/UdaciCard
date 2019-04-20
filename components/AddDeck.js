@@ -1,5 +1,5 @@
 import React from 'react';
-import { red } from '../Utilit';
+import { red, blue, green } from '../Colors'
 import { Text, View, Button, TextInput, StyleSheet, KeyboardAvoidingView } from 'react-native';
 
 export default class AddDeck extends React.Component {
@@ -11,8 +11,8 @@ export default class AddDeck extends React.Component {
     this.setState({ title });
   };
 
-  createDeck = () => {
-    this.props.navigation.navigate('Decks');
+  creatNewDeck = deckTitle => {
+    this.props.navigation.navigate('Deck', { title : deckTitle })
   };
 
   render() {
@@ -25,11 +25,13 @@ export default class AddDeck extends React.Component {
         <TextInput
           style={[styles.input,{ borderColor: red} ]}
           value={title}
+          selectionColor={ green }
+          underlineColorAndroid={ blue }
           placeholder="Type here the title !"
           onChangeText={text => this.onChangeText(text)}
         />
 
-        <Button title={`Create ${title} Deck`} onPress={this.createDeck} />
+        <Button title={`Create ${title} Deck`} onPress={ () => this.props.navigation.navigate('Deck', { title : title }) } />
       </KeyboardAvoidingView>
     );
   }
@@ -41,7 +43,10 @@ const styles = StyleSheet.create({
     margin: 40
   },
   input: {
-    height: 40,
+    marginBottom: 50,
+    height: 80,
+    width: 300,
+    fontSize:18,
     borderColor: '#c6c7c8'
   }
 });

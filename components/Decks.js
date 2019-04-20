@@ -1,28 +1,39 @@
 import React from 'react';
-import { Text, ScrollView, TouchableOpacity, View, StyleSheet } from 'react-native';
+import {
+  Text,
+  ScrollView,
+  TouchableOpacity,
+  View,
+  StyleSheet,
+  AsyncStorage
+} from 'react-native';
 
 export default class Decks extends React.Component {
   state = {
-    decklist: [
-      { name: 'Deck 01' },
-      { name: 'Deck 02' },
-      { name: 'Deck 03' },
-      { name: 'Deck 04' },
-      { name: 'Deck 05' }
-    ]
+    decksData: null
   };
+  componentDidMount() {
+    const decksData = AsyncStorage.getItem('DecksData');
+    this.setState({ decksData });
+  }
+
   render() {
-    const { decklist } = this.state;
+    const { decksData } = this.state;
     return (
-      <ScrollView  style={ styles.container}>
-        {decklist.map((data, idx) => (
-          <TouchableOpacity
-            key={idx}
-            onPress={() => this.props.navigation.navigate(`${data.name}`)}
-            style={ styles.fullWidthButton}>
-            <Text>Name : {data.name}</Text>
-          </TouchableOpacity>
-        ))}
+      <ScrollView style={styles.container}>
+        {decksData !== null &&
+          Object.keys(decksData).map((title, idx) => (
+            <TouchableOpacity
+              key={idx}
+              onPress={() =>
+                this.props.navigation.navigate('Deck', {
+                  title: title
+                })
+              }
+              style={styles.fullWidthButton}>
+              <Text>{title}</Text>
+            </TouchableOpacity>
+          ))}
       </ScrollView>
     );
   }
@@ -31,7 +42,7 @@ export default class Decks extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#F5FCFF"
+    backgroundColor: '#F5FCFF'
   },
   fullWidthButton: {
     backgroundColor: '#c6c7c8',
@@ -47,8 +58,8 @@ const styles = StyleSheet.create({
     width: 300,
     height: 200
   },
-  review : {
+  review: {
     margin: 0,
     flexDirection: 'row'
-  } 
+  }
 });
