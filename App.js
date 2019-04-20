@@ -1,10 +1,12 @@
 import React from 'react';
 import TabNavigator from './Tabs';
-import { AsyncStorage } from 'react-native'
+//import Navigator from './Navigator';
+import { lightGray, red } from './Colors';
+import { AsyncStorage, StatusBar, View } from 'react-native';
 
 export default class App extends React.Component {
-  state = {
-    decksData: {
+  componentDidMount() {
+    const decksData = {
       React: {
         title: 'React',
         questions: [
@@ -28,11 +30,8 @@ export default class App extends React.Component {
           }
         ]
       }
-    }
-  };
-  componentDidMount() {
-    const { decksData } = this.state;
-    AsyncStorage.setItem('DecksData', JSON.stringify(decksData));
+    };
+    AsyncStorage.setItem('Data:Deckslist', JSON.stringify(decksData));
   }
 
   render() {

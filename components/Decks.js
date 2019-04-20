@@ -7,18 +7,25 @@ import {
   StyleSheet,
   AsyncStorage
 } from 'react-native';
+import { lightGray, white, gray } from '../Colors';
 
 export default class Decks extends React.Component {
   state = {
     decksData: null
   };
   componentDidMount() {
-    const decksData = AsyncStorage.getItem('DecksData');
-    this.setState({ decksData });
+    this.getData()
   }
+
+  getData = async () => {
+      const decksData = await AsyncStorage.getItem('Data:Deckslist');
+      this.setState({ decksData: JSON.parse(decksData) })
+  };
 
   render() {
     const { decksData } = this.state;
+
+    console.log('decksData state: ', decksData);
     return (
       <ScrollView style={styles.container}>
         {decksData !== null &&
@@ -42,15 +49,15 @@ export default class Decks extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F5FCFF'
+    backgroundColor: white
   },
   fullWidthButton: {
-    backgroundColor: '#c6c7c8',
+    backgroundColor: white,
     flexDirection: 'row',
 
     justifyContent: 'center',
     alignItems: 'center',
-    borderColor: 'gray',
+    borderColor: lightGray,
     borderWidth: 1,
     marginBottom: 10,
     marginTop: 10,

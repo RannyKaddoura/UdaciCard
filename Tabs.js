@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Text, View, Image, StyleSheet, Dimensions } from 'react-native';
+import { Text, View, Image } from 'react-native';
 import {
   createBottomTabNavigator,
   createStackNavigator,
@@ -9,7 +9,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import Decks from './components/Decks';
 import Deck from './components/Deck';
 import AddDeck from './components/AddDeck';
-
+import { red } from './Colors';
 
 class DetailsScreen extends Component {
   render() {
@@ -23,10 +23,23 @@ class DetailsScreen extends Component {
 }
 
 const HomeStack = createStackNavigator({
-  Decks: Decks,//HomeScreen,
-  Deck: Deck
+  Decks: {
+    screen: Decks,
+    navigationOptions: () => ({
+      title: `Decks List`,
+      headerBackTitle: null,
+      headerTitleStyle: { color: red, paddingLeft: 145 }
+    }),
+  },
+  Deck: {
+    screen: Deck,
+    navigationOptions: () => ({
+      title: `Deck`,
+      headerBackTitle: null
+    }),
+  },
+  AddDeck: AddDeck
 });
-
 
 export default createAppContainer(
   createBottomTabNavigator(
@@ -58,10 +71,3 @@ export default createAppContainer(
     }
   )
 );
-
-const styles = StyleSheet.create({
-  image: {
-    width: Dimensions.get('window').width,
-    overflow: 'visible'
-  }
-});

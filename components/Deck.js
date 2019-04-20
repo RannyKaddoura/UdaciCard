@@ -1,5 +1,5 @@
 import React from 'react';
-import { red, white, lightGray } from '../Colors'
+import { red, white, lightGray, darkGray } from '../Colors'
 import {
   Text,
   TouchableOpacity, 
@@ -14,7 +14,7 @@ export default class Deck extends React.Component {
     const { navigation } = this.props;
     return (
       <View style={styles.container}>
-        <Text style={{ fontSize: 24 , margin: 20}}>Deck title is : {navigation.getParam('title')}</Text>
+        <Text style={{ fontSize: 24 , margin: 20}}>Deck Name : {navigation.getParam('title')}</Text>
 
         <TouchableOpacity>
           <Text style={[ styles.text, styles.normalButton ]}>Add Card</Text>
@@ -49,11 +49,13 @@ const styles = StyleSheet.create({
   },
   normalButton: {
     backgroundColor: lightGray,
+    margin:15,
     padding: 10,
     color: white,
     width: 200,
     textAlign: 'center',
-    borderRadius: 5
+    borderRadius: 5,
+    borderColor: darkGray
   },
   text : {
     justifyContent: 'flex-end',
