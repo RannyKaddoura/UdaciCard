@@ -74,7 +74,7 @@ export default class AddDeck extends React.Component {
           onPress={() => {
             if ( title ) {
             this.storDeck(title);
-            this.props.navigation.navigate('Deck', { title: title });
+            this.props.navigation.navigate('Decks', { token: 'Uasdnldaw52' });
           } else {this.props.navigation.navigate('Errors');}
           }}
         />
