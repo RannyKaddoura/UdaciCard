@@ -1,6 +1,6 @@
 import React from 'react';
 import TabNavigator from './Tabs';
-//import Navigator from './Navigator';
+//import Navigator from './Navigator';+-
 import { lightGray, red } from './Colors';
 import { AsyncStorage, StatusBar, View } from 'react-native';
 
