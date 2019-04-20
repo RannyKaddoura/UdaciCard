@@ -1,26 +1,16 @@
-import React, { Component } from 'react';
-import { Text, View, Image } from 'react-native';
+import React from 'react';
 import {
   createBottomTabNavigator,
   createStackNavigator,
-  createAppContainer
+  createAppContainer,
+  NavigationActions
 } from 'react-navigation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Decks from './components/Decks';
 import Deck from './components/Deck';
 import AddDeck from './components/AddDeck';
+import Errors from './components/error';
 import { red } from './Colors';
-
-class DetailsScreen extends Component {
-  render() {
-    return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Image resizeMode="center" source={require('./assets/test.jpg')} />
-        <Text>You are in DetailsScreen </Text>
-      </View>
-    );
-  }
-}
 
 const HomeStack = createStackNavigator({
   Decks: {
@@ -29,14 +19,17 @@ const HomeStack = createStackNavigator({
       title: `Decks List`,
       headerBackTitle: null,
       headerTitleStyle: { color: red, paddingLeft: 145 }
-    }),
+    })
   },
   Deck: {
     screen: Deck,
     navigationOptions: () => ({
       title: `Deck`,
       headerBackTitle: null
-    }),
+    })
+  },
+  Errors: {
+    screen: Errors
   },
   AddDeck: AddDeck
 });

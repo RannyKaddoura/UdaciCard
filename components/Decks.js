@@ -14,18 +14,17 @@ export default class Decks extends React.Component {
     decksData: null
   };
   componentDidMount() {
+    console.log('componentDidMount RUNING');
     this.getData()
   }
-
+  
   getData = async () => {
       const decksData = await AsyncStorage.getItem('Data:Deckslist');
       this.setState({ decksData: JSON.parse(decksData) })
   };
 
   render() {
-    const { decksData } = this.state;
-
-    console.log('decksData state: ', decksData);
+    const { decksData } = this.state;    
     return (
       <ScrollView style={styles.container}>
         {decksData !== null &&
