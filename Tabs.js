@@ -9,6 +9,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import Decks from './components/Decks';
 import Deck from './components/Deck';
 import AddDeck from './components/AddDeck';
+import AddQuestion from './components/AddQuestion';
 import Errors from './components/error';
 import Quiz from './components/Quiz';
 import { red } from './Colors';
@@ -33,6 +34,13 @@ const HomeStack = createStackNavigator({
     screen: Quiz,
     navigationOptions: () => ({
       title: `Quiz`,
+      headerBackTitle: null
+    })
+  },
+  AddQuestion: {
+    screen: AddQuestion,
+    navigationOptions: () => ({
+      title: `AddQuestion`,
       headerBackTitle: null
     })
   },

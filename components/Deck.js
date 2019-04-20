@@ -27,7 +27,10 @@ export default class Deck extends React.Component {
           Deck Name : {navigation.getParam('title')}
         </Text>
 
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() =>
+            this.props.navigation.navigate('AddQuestion', { key: navigation.getParam('title') })
+          }>
           <Text style={[styles.text, styles.normalButton]}>Add Card</Text>
         </TouchableOpacity>
 

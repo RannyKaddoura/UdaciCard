@@ -33,7 +33,7 @@ export default class Decks extends React.Component {
 
   render() {
     const { decksData } = this.state;
-
+    console.log('Decks decksData', decksData);
     return (
       <ScrollView style={styles.container}>
         {decksData !== null &&

@@ -27,7 +27,7 @@ export default class Quiz extends React.Component {
   };
 
   render() {
-    const { decksData, questions, key } = this.state;
+    const { decksData, key } = this.state;
 
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
