@@ -15,32 +15,25 @@ export default class Decks extends React.Component {
     token: null
   };
   componentDidMount() {
-    console.log('componentDidMount RUNING');
-    this.getData()
+    this.getData();
   }
-  
-  getData = async () => {
-    console.log('getData RUNING');
-      const decksData = await AsyncStorage.getItem('Data:Deckslist');
-      this.setState({ decksData: JSON.parse(decksData) })
-  };
-  
-  componentWillReceiveProps(nextProps) {
-    console.log("ReceiveProps", nextProps.navigation.state.params.token)
-    if (nextProps.navigation.state.params.token) {
 
+  getData = async () => {
+    const decksData = await AsyncStorage.getItem('Data:Deckslist');
+    this.setState({ decksData: JSON.parse(decksData) });
+  };
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.navigation.state.params.token) {
       setTimeout(() => {
-        this.getData()
+        this.getData();
       }, 1500);
-      
     }
   }
 
-
-
   render() {
-    const { decksData } = this.state;    
-    console.log("HOME decksData",decksData)
+    const { decksData } = this.state;
+
     return (
       <ScrollView style={styles.container}>
         {decksData !== null &&
@@ -55,7 +48,9 @@ export default class Decks extends React.Component {
               style={styles.fullWidthButton}>
               <View style={styles.textContainer}>
                 <Text style={styles.text}>Deck : {title}</Text>
-                <Text style={styles.text}>Cards :{decksData[title].questions.length}</Text>
+                <Text style={styles.text}>
+                  Cards :{decksData[title].questions.length}
+                </Text>
               </View>
             </TouchableOpacity>
           ))}
@@ -86,9 +81,9 @@ const styles = StyleSheet.create({
   textContainer: {
     alignItems: 'center',
     flex: 1,
-    flexDirection: 'column',
+    flexDirection: 'column'
   },
-  text : {
+  text: {
     marginTop: 10,
     marginBottom: 10
   },

@@ -20,6 +20,7 @@ export default class Deck extends React.Component {
 
   render() {
     const { navigation } = this.props;
+    
     return (
       <View style={styles.container}>
         <Text style={{ fontSize: 24, margin: 20 }}>
@@ -30,7 +31,10 @@ export default class Deck extends React.Component {
           <Text style={[styles.text, styles.normalButton]}>Add Card</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() =>  
+            this.props.navigation.navigate('Quiz', { key: navigation.getParam('title') })
+          }>
           <Text style={[styles.text, styles.normalButton]}>Start Quiz</Text>
         </TouchableOpacity>
 
