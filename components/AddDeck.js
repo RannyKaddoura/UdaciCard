@@ -1,16 +1,47 @@
 import React from 'react';
-import { Text, View, Button } from 'react-native';
+import { red } from '../Utilit';
+import { Text, View, Button, TextInput, StyleSheet, KeyboardAvoidingView } from 'react-native';
 
 export default class AddDeck extends React.Component {
+  state = {
+    title: ''
+  };
+
+  onChangeText = (title) => {
+    this.setState({ title });
+  };
+
+  createDeck = () => {
+    this.props.navigation.navigate('Decks');
+  };
+
   render() {
+    const { title } = this.state;
+
     return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>You are in NewDeck Component</Text>
-        <Button
-          title="Go to test"
-          onPress={() => this.props.navigation.navigate('Details')}
+      <KeyboardAvoidingView behavior='padding' style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <Text style={styles.title}>What is the title of your new Deck ???</Text>
+
+        <TextInput
+          style={[styles.input,{ borderColor: red} ]}
+          value={title}
+          placeholder="Type here the title !"
+          onChangeText={text => this.onChangeText(text)}
         />
-      </View>
+
+        <Button title={`Create ${title} Deck`} onPress={this.createDeck} />
+      </KeyboardAvoidingView>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  title: {
+    fontSize: 32,
+    margin: 40
+  },
+  input: {
+    height: 40,
+    borderColor: '#c6c7c8'
+  }
+});
