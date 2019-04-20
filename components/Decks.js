@@ -7,11 +7,12 @@ import {
   StyleSheet,
   AsyncStorage
 } from 'react-native';
-import { lightGray, white, gray, black } from '../Colors';
+import { lightGray, white, black } from '../Colors';
 
 export default class Decks extends React.Component {
   state = {
-    decksData: null
+    decksData: null,
+    token: null
   };
   componentDidMount() {
     console.log('componentDidMount RUNING');
@@ -19,12 +20,27 @@ export default class Decks extends React.Component {
   }
   
   getData = async () => {
+    console.log('getData RUNING');
       const decksData = await AsyncStorage.getItem('Data:Deckslist');
       this.setState({ decksData: JSON.parse(decksData) })
   };
+  
+  componentWillReceiveProps(nextProps) {
+    console.log("ReceiveProps", nextProps.navigation.state.params.token)
+    if (nextProps.navigation.state.params.token) {
+
+      setTimeout(() => {
+        this.getData()
+      }, 1500);
+      
+    }
+  }
+
+
 
   render() {
     const { decksData } = this.state;    
+    console.log("HOME decksData",decksData)
     return (
       <ScrollView style={styles.container}>
         {decksData !== null &&

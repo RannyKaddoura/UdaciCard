@@ -15,10 +15,7 @@ export default class Deck extends React.Component {
     const decksData = await AsyncStorage.getItem('Data:Deckslist');
     const Deck = JSON.parse(decksData);
     delete Deck[title];
-
     await AsyncStorage.setItem('Data:Deckslist', JSON.stringify(Deck));
-
-    console.log('removeDeck', Deck);
   };
 
   render() {
@@ -40,7 +37,7 @@ export default class Deck extends React.Component {
         <TouchableOpacity
           onPress={() => {
             this.removeDeck(navigation.getParam('title'));
-            this.props.navigation.navigate('Decks');
+            this.props.navigation.navigate('Decks', { token: 'ASdjpadA/6asdhj' });
           }}
           style={styles.bottom}>
           <Text style={[styles.delete, styles.deleteButton]}>
