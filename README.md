@@ -30,13 +30,13 @@ you will see in your reminal somthing like
  - you will have somthing like :
 
  <p align="center">
-  <a href="https://www.starticket.ch/de">
-    <img alt="starticket" src="https://cdn-images-1.medium.com/max/1600/1*ICbUGO11EmaHoGyXKNINCg.png" width="350">
+  <a href="https://cdn-images-1.medium.com/max/1600/1*ICbUGO11EmaHoGyXKNINCg.png">
+    <img alt="expo" src="https://cdn-images-1.medium.com/max/1600/1*ICbUGO11EmaHoGyXKNINCg.png" width="450">
   </a>
 </p>
 
  - you will be able to run you application if you use the QR code reader on your mobile expo version
- 
+
 
 
 This application has been tested and development on android platform 9.0 display size 6.4"
