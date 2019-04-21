@@ -20,11 +20,18 @@ export default class Deck extends React.Component {
 
   render() {
     const { navigation } = this.props;
-    
+    const decksData = navigation.getParam('decksData');
+    const key = navigation.getParam('title');
+    console.log("Deck decksData[key]",decksData);
+
     return (
       <View style={styles.container}>
         <Text style={{ fontSize: 24, margin: 20 }}>
-          Deck Name : {navigation.getParam('title')}
+          Deck Name : {key}
+        </Text>
+
+        <Text style={{ fontSize: 24, margin: 20 }}>
+          Cards Numbers : {decksData !== undefined && decksData[key].questions.length}
         </Text>
 
         <TouchableOpacity
