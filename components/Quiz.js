@@ -87,6 +87,16 @@ export default class Quiz extends React.Component {
       );
     }
 
+    if (questions.length === 0) {
+      return (
+        <View style={[ styles.container, { backgroundColor: red }]}>
+          <Text style={[{ borderColor: red, color: white }]}>
+            You have to add some cards first
+          </Text>
+        </View>
+      );
+    }
+
     return (
       <ScrollView style={styles.container}>
         {decksData !== null && (
