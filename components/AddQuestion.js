@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   Text,
-  ScrollView,
+  KeyboardAvoidingView,
   Button,
   TextInput,
   AsyncStorage,
@@ -54,7 +54,7 @@ export default class AddQuestion extends React.Component {
   render() {
 
     return (
-      <ScrollView style={styles.container}>
+      <KeyboardAvoidingView style={styles.container}>
         <Text>Add Your Question Here</Text>
 
         <TextInput
@@ -81,7 +81,7 @@ export default class AddQuestion extends React.Component {
             }, 1000);
           }}
         />
-      </ScrollView>
+      </KeyboardAvoidingView>
     );
   }
 }
