@@ -81,7 +81,7 @@ export default class Quiz extends React.Component {
       <View style={styles.container}>
         {decksData !== null && (
           <Text style={styles.title}>
-            Question {index + 1} /{decksData[key].questions.length} of {key}
+            Question {index + 1}/{decksData[key].questions.length}  of {key}
           </Text>
         )}
 
@@ -102,8 +102,8 @@ export default class Quiz extends React.Component {
         <View style={styles.buttonsContainer}>
           <TouchableOpacity
             style={styles.CorrectButton}
-            onPress={() => this.setState({ showAnswer: true })}>
-            <Text style={styles.text}>Show Answer !!</Text>
+            onPress={() => this.setState({ showAnswer: !this.state.showAnswer })}>
+            <Text style={styles.text}>{showAnswer === false ? 'Show Answer !!' : 'Hide Answer !!'}  </Text>
           </TouchableOpacity>
 
           <TouchableOpacity
