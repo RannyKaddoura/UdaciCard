@@ -1,7 +1,8 @@
 import React from 'react';
 import TabNavigator from './Tabs';
-import { DECKS_DATA_KEY, lightGray, red } from './Variables';
-import { AsyncStorage, StatusBar, View } from 'react-native';
+import { DECKS_DATA_KEY } from './Variables';
+import { AsyncStorage } from 'react-native';
+import { setLocalNotification } from './util/Notifications';
 
 export default class App extends React.Component {
   componentDidMount() {
@@ -31,6 +32,7 @@ export default class App extends React.Component {
       }
     };
     AsyncStorage.setItem(DECKS_DATA_KEY, JSON.stringify(decksData));
+    setLocalNotification();
   }
 
   render() {

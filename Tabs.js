@@ -12,6 +12,7 @@ import AddDeck from './components/AddDeck';
 import AddQuestion from './components/AddQuestion';
 import Errors from './components/error';
 import Quiz from './components/Quiz';
+import Score from './components/Score';
 import { red } from './Variables';
 
 const HomeStack = createStackNavigator({
@@ -34,6 +35,13 @@ const HomeStack = createStackNavigator({
     screen: Quiz,
     navigationOptions: () => ({
       title: `Quiz`,
+      headerBackTitle: null
+    })
+  },
+  Score: {
+    screen: Score,
+    navigationOptions: () => ({
+      title: `Score`,
       headerBackTitle: null
     })
   },

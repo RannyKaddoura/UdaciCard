@@ -1,8 +1,8 @@
-import React from 'react'
-import { Notifications, Permissions } from 'expo'
-import { AsyncStorage } from 'react-native'
+import React from 'react';
+import { AsyncStorage } from 'react-native';
+import { Permissions, Notifications } from 'expo';
 
-import NOTIFICATIONS_KEY from '../Variables';
+const NOTIFICATIONS_KEY = 'Udacicards:Notification';
 
 export function clearLocalNotifications() {
   return AsyncStorage.removeItem(NOTIFICATIONS_KEY).then(
@@ -13,7 +13,7 @@ export function clearLocalNotifications() {
 function createNotification() {
   return {
     title: 'Complete one Quiz',
-    body: "👋 Hey, Do not forget about your daily Quiz!",
+    body: '👋 Hey, Do not forget about your daily Quiz!',
     ios: {
       sound: true
     },
@@ -51,5 +51,3 @@ export function setLocalNotification() {
       }
     });
 }
-
-
