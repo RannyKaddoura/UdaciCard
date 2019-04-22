@@ -89,8 +89,8 @@ export default class Quiz extends React.Component {
 
     if (questions.length === 0) {
       return (
-        <View style={[ styles.container, { backgroundColor: red }]}>
-          <Text style={[{ borderColor: red, color: white }]}>
+        <View style={styles.errorContainer}>
+          <Text style={styles.errorInput}>
             You have to add some cards first
           </Text>
         </View>
@@ -216,5 +216,20 @@ const styles = StyleSheet.create({
     fontSize: 22,
     textAlign: 'center',
     color: black
+  },
+  errorContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    backgroundColor: red,
+    alignItems: 'center'
+  },
+  errorInput: {
+    marginBottom: 40,
+    height: 100,
+    width: 300,
+    fontSize: 32,
+    color: white,
+    textAlign: 'center',
+    borderColor: '#c6c7c8'
   }
 });
