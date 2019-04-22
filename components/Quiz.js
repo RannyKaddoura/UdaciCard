@@ -3,6 +3,7 @@ import { DECKS_DATA_KEY, green, red, white, black } from '../Variables';
 import {
   Text,
   View,
+  ScrollView,
   StyleSheet,
   TouchableOpacity,
   AsyncStorage
@@ -59,7 +60,7 @@ export default class Quiz extends React.Component {
 
     if (done === true) {
       return (
-        <View style={styles.scoreContainer}>
+        <ScrollView style={styles.scoreContainer}>
           <Text style={styles.input}>
             Your Score is {score} / {questions.length}
           </Text>
@@ -82,12 +83,12 @@ export default class Quiz extends React.Component {
             onPress={() => this.setState({ done: false, index: 0, score: 0 })}>
             <Text style={styles.scorText}>Do the Quiz again</Text>
           </TouchableOpacity>
-        </View>
+        </ScrollView>
       );
     }
 
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         {decksData !== null && (
           <Text style={styles.title}>
             Question {index + 1}/{decksData[key].questions.length} of {key}
@@ -131,7 +132,7 @@ export default class Quiz extends React.Component {
             <Text style={styles.text}>Incorrect ?</Text>
           </TouchableOpacity>
         </View>
-      </View>
+      </ScrollView>
     );
   }
 }
