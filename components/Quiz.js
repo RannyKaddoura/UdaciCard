@@ -79,7 +79,7 @@ export default class Quiz extends React.Component {
 
           <TouchableOpacity
             style={styles.scorButton}
-            onPress={() =>  this.setState({ done: false, index: 0, score: 0 })}>
+            onPress={() => this.setState({ done: false, index: 0, score: 0 })}>
             <Text style={styles.scorText}>Do the Quiz again</Text>
           </TouchableOpacity>
         </View>

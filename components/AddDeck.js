@@ -72,10 +72,12 @@ export default class AddDeck extends React.Component {
         <Button
           title={`Create ${title} Deck`}
           onPress={() => {
-            if ( title ) {
-            this.storDeck(title);
-            this.props.navigation.navigate('Decks', { token: 'Uasdnldaw52' });
-          } else {this.props.navigation.navigate('Errors');}
+            if (title) {
+              this.storDeck(title);
+              this.props.navigation.navigate('Decks', { token: 'Uasdnldaw52' });
+            } else {
+              this.props.navigation.navigate('Errors');
+            }
           }}
         />
       </KeyboardAvoidingView>

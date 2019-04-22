@@ -1,14 +1,13 @@
 import React from 'react';
 import {
   Text,
-  View,
   ScrollView,
   Button,
   TextInput,
   AsyncStorage,
   StyleSheet
 } from 'react-native';
-import { DECKS_DATA_KEY, white, black } from '../Variables';
+import { DECKS_DATA_KEY, white } from '../Variables';
 
 export default class AddQuestion extends React.Component {
   state = {
@@ -53,7 +52,6 @@ export default class AddQuestion extends React.Component {
   };
 
   render() {
-    const { decksData, key } = this.state;
 
     return (
       <ScrollView style={styles.container}>

@@ -2,8 +2,7 @@ import React from 'react';
 import {
   createBottomTabNavigator,
   createStackNavigator,
-  createAppContainer,
-  NavigationActions
+  createAppContainer
 } from 'react-navigation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Decks from './components/Decks';

@@ -1,8 +1,7 @@
 import React from 'react';
 import { red, white } from '../Variables';
 import { Text, View, StyleSheet, StatusBar } from 'react-native';
-import { Constants } from 'expo'
-
+import { Constants } from 'expo';
 
 export default class Errors extends React.Component {
   render() {

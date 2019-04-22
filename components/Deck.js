@@ -51,14 +51,14 @@ export default class Deck extends React.Component {
 
         <TouchableOpacity
           onPress={() => {
-            this.removeDeck(navigation.getParam('title'));
+            this.removeDeck(key);
             this.props.navigation.navigate('Decks', {
               token: 'ASdjpadA/6asdhj'
             });
           }}
           style={styles.bottom}>
           <Text style={[styles.delete, styles.deleteButton]}>
-            DELETE {navigation.getParam('title')} DECK
+            DELETE {key} DECK
           </Text>
         </TouchableOpacity>
       </View>
