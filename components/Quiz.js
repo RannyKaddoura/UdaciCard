@@ -184,8 +184,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   input: {
-    marginBottom: 40,
-    height: 100,
+    marginBottom: 20,
     width: 300,
     fontSize: 22,
     color: white,
