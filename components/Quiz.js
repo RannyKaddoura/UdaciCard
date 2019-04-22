@@ -60,7 +60,7 @@ export default class Quiz extends React.Component {
 
     if (done === true) {
       return (
-        <ScrollView style={styles.scoreContainer}>
+        <View style={styles.scoreContainer}>
           <Text style={styles.input}>
             Your Score is {score} / {questions.length}
           </Text>
@@ -83,7 +83,7 @@ export default class Quiz extends React.Component {
             onPress={() => this.setState({ done: false, index: 0, score: 0 })}>
             <Text style={styles.scorText}>Do the Quiz again</Text>
           </TouchableOpacity>
-        </ScrollView>
+        </View>
       );
     }
 
