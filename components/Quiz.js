@@ -1,5 +1,5 @@
 import React from 'react';
-import { DECKS_DATA_KEY, green, red, white } from '../Variables';
+import { DECKS_DATA_KEY, green, red, white, black } from '../Variables';
 import {
   Text,
   View,
@@ -59,19 +59,28 @@ export default class Quiz extends React.Component {
 
     if (done === true) {
       return (
-        <View style={styles.buttonsContainer}>
+        <View style={styles.scoreContainer}>
+          <Text style={styles.input}>
+            Your Score is {score} / {questions.length}
+          </Text>
+          <Text style={styles.input}>
+            that mean {(100 * score) / questions.length} % Corrent
+          </Text>
           <TouchableOpacity
-            style={styles.CorrectButton}
+            style={styles.scorButton}
             onPress={() =>
-              this.props.navigation.navigate('Score', {
-                score: score,
-                questionsNumber: questions.length
+              this.props.navigation.navigate('Deck', {
+                key: key,
+                decksData: decksData
               })
             }>
-            <Text style={styles.text}>
-              Congratulations you finished {decksData[key].title} quiz, Show
-              your Score !!
-            </Text>
+            <Text style={styles.scorText}>Back To Deck</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.scorButton}
+            onPress={() =>  this.setState({ done: false, index: 0, score: 0 })}>
+            <Text style={styles.scorText}>Do the Quiz again</Text>
           </TouchableOpacity>
         </View>
       );
@@ -81,7 +90,7 @@ export default class Quiz extends React.Component {
       <View style={styles.container}>
         {decksData !== null && (
           <Text style={styles.title}>
-            Question {index + 1}/{decksData[key].questions.length}  of {key}
+            Question {index + 1}/{decksData[key].questions.length} of {key}
           </Text>
         )}
 
@@ -102,8 +111,12 @@ export default class Quiz extends React.Component {
         <View style={styles.buttonsContainer}>
           <TouchableOpacity
             style={styles.CorrectButton}
-            onPress={() => this.setState({ showAnswer: !this.state.showAnswer })}>
-            <Text style={styles.text}>{showAnswer === false ? 'Show Answer !!' : 'Hide Answer !!'}  </Text>
+            onPress={() =>
+              this.setState({ showAnswer: !this.state.showAnswer })
+            }>
+            <Text style={styles.text}>
+              {showAnswer === false ? 'Show Answer !!' : 'Hide Answer !!'}{' '}
+            </Text>
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -162,5 +175,36 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 50,
     alignItems: 'center'
+  },
+  scoreContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    backgroundColor: green,
+    alignItems: 'center'
+  },
+  input: {
+    marginBottom: 40,
+    height: 100,
+    width: 300,
+    fontSize: 22,
+    color: white,
+    textAlign: 'center',
+    borderColor: '#c6c7c8'
+  },
+  scorButton: {
+    textAlign: 'center',
+    backgroundColor: white,
+    padding: 10,
+    width: 200,
+    borderRadius: 5,
+    margin: 10,
+    fontSize: 22,
+    marginTop: 60,
+    color: black
+  },
+  scorText: {
+    fontSize: 22,
+    textAlign: 'center',
+    color: black
   }
 });

@@ -42,7 +42,7 @@ export default class Decks extends React.Component {
               key={idx}
               onPress={() =>
                 this.props.navigation.navigate('Deck', {
-                  title: title,
+                  key: title,
                   decksData: decksData
                 })
               }

@@ -18,8 +18,8 @@ export default class Deck extends React.Component {
 
   render() {
     const { navigation } = this.props;
-    const decksData = navigation.getParam('decksData');
-    const key = navigation.getParam('title');
+    const decksData = this.props.navigation.state.params.decksData;
+    const key = this.props.navigation.state.params.key;
 
     return (
       <View style={styles.container}>
@@ -33,7 +33,7 @@ export default class Deck extends React.Component {
         <TouchableOpacity
           onPress={() =>
             this.props.navigation.navigate('AddQuestion', {
-              key: navigation.getParam('title')
+              key: key
             })
           }>
           <Text style={[styles.text, styles.normalButton]}>Add Card</Text>
@@ -42,7 +42,7 @@ export default class Deck extends React.Component {
         <TouchableOpacity
           onPress={() =>
             this.props.navigation.navigate('Quiz', {
-              key: navigation.getParam('title'),
+              key: key,
               deck: decksData[key]
             })
           }>
