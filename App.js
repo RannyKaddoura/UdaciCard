@@ -1,6 +1,6 @@
 import React from 'react';
 import TabNavigator from './Tabs';
-import { lightGray, red } from './Colors';
+import { DECKS_DATA_KEY, lightGray, red } from './Variables';
 import { AsyncStorage, StatusBar, View } from 'react-native';
 
 export default class App extends React.Component {
@@ -30,7 +30,7 @@ export default class App extends React.Component {
         ]
       }
     };
-    AsyncStorage.setItem('Data:Deckslist', JSON.stringify(decksData));
+    AsyncStorage.setItem(DECKS_DATA_KEY, JSON.stringify(decksData));
   }
 
   render() {

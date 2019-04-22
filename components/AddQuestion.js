@@ -8,7 +8,7 @@ import {
   AsyncStorage,
   StyleSheet
 } from 'react-native';
-import { lightGray, white, black } from '../Colors';
+import { DECKS_DATA_KEY, white, black } from '../Variables';
 
 export default class AddQuestion extends React.Component {
   state = {
@@ -25,7 +25,7 @@ export default class AddQuestion extends React.Component {
   }
 
   getData = async () => {
-    const decksData = await AsyncStorage.getItem('Data:Deckslist');
+    const decksData = await AsyncStorage.getItem(DECKS_DATA_KEY);
     this.setState({ decksData: JSON.parse(decksData) });
   };
 
@@ -49,7 +49,7 @@ export default class AddQuestion extends React.Component {
         })
       }
     };
-    AsyncStorage.setItem('Data:Deckslist', JSON.stringify(decksData));
+    AsyncStorage.setItem(DECKS_DATA_KEY, JSON.stringify(decksData));
   };
 
   render() {

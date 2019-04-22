@@ -7,7 +7,7 @@ import {
   StyleSheet,
   AsyncStorage
 } from 'react-native';
-import { lightGray, white, black } from '../Colors';
+import { DECKS_DATA_KEY, lightGray, white, black } from '../Variables';
 
 export default class Decks extends React.Component {
   state = {
@@ -19,7 +19,7 @@ export default class Decks extends React.Component {
   }
 
   getData = async () => {
-    const decksData = await AsyncStorage.getItem('Data:Deckslist');
+    const decksData = await AsyncStorage.getItem(DECKS_DATA_KEY);
     this.setState({ decksData: JSON.parse(decksData) });
   };
 

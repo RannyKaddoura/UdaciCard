@@ -1,5 +1,5 @@
 import React from 'react';
-import { green, red, white } from '../Colors';
+import { DECKS_DATA_KEY, green, red, white } from '../Variables';
 import {
   Text,
   View,
@@ -22,7 +22,7 @@ export default class Quiz extends React.Component {
   }
 
   getData = async () => {
-    const decksData = await AsyncStorage.getItem('Data:Deckslist');
+    const decksData = await AsyncStorage.getItem(DECKS_DATA_KEY);
     this.setState({ decksData: JSON.parse(decksData) });
   };
 

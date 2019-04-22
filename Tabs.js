@@ -12,7 +12,7 @@ import AddDeck from './components/AddDeck';
 import AddQuestion from './components/AddQuestion';
 import Errors from './components/error';
 import Quiz from './components/Quiz';
-import { red } from './Colors';
+import { red } from './Variables';
 
 const HomeStack = createStackNavigator({
   Decks: {

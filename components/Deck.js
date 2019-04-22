@@ -1,5 +1,5 @@
 import React from 'react';
-import { red, white, lightGray, darkGray } from '../Colors';
+import { DECKS_DATA_KEY, red, white, lightGray, darkGray } from '../Variables';
 import {
   Text,
   TouchableOpacity,
@@ -8,42 +8,43 @@ import {
   AsyncStorage
 } from 'react-native';
 
-
 export default class Deck extends React.Component {
-
   removeDeck = async title => {
-    const decksData = await AsyncStorage.getItem('Data:Deckslist');
+    const decksData = await AsyncStorage.getItem(DECKS_DATA_KEY);
     const Deck = JSON.parse(decksData);
     delete Deck[title];
-    await AsyncStorage.setItem('Data:Deckslist', JSON.stringify(Deck));
+    await AsyncStorage.setItem(DECKS_DATA_KEY, JSON.stringify(Deck));
   };
 
   render() {
     const { navigation } = this.props;
     const decksData = navigation.getParam('decksData');
     const key = navigation.getParam('title');
-    console.log("Deck decksData[key]",decksData);
+    console.log('Deck decksData[key]', decksData);
 
     return (
       <View style={styles.container}>
-        <Text style={{ fontSize: 24, margin: 20 }}>
-          Deck Name : {key}
-        </Text>
+        <Text style={{ fontSize: 24, margin: 20 }}>Deck Name : {key}</Text>
 
         <Text style={{ fontSize: 24, margin: 20 }}>
-          Cards Numbers : {decksData !== undefined && decksData[key].questions.length}
+          Cards Numbers :{' '}
+          {decksData !== undefined && decksData[key].questions.length}
         </Text>
 
         <TouchableOpacity
           onPress={() =>
-            this.props.navigation.navigate('AddQuestion', { key: navigation.getParam('title') })
+            this.props.navigation.navigate('AddQuestion', {
+              key: navigation.getParam('title')
+            })
           }>
           <Text style={[styles.text, styles.normalButton]}>Add Card</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
-          onPress={() =>  
-            this.props.navigation.navigate('Quiz', { key: navigation.getParam('title') })
+          onPress={() =>
+            this.props.navigation.navigate('Quiz', {
+              key: navigation.getParam('title')
+            })
           }>
           <Text style={[styles.text, styles.normalButton]}>Start Quiz</Text>
         </TouchableOpacity>
@@ -51,7 +52,9 @@ export default class Deck extends React.Component {
         <TouchableOpacity
           onPress={() => {
             this.removeDeck(navigation.getParam('title'));
-            this.props.navigation.navigate('Decks', { token: 'ASdjpadA/6asdhj' });
+            this.props.navigation.navigate('Decks', {
+              token: 'ASdjpadA/6asdhj'
+            });
           }}
           style={styles.bottom}>
           <Text style={[styles.delete, styles.deleteButton]}>

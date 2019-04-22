@@ -1,5 +1,5 @@
 import React from 'react';
-import { red, blue, green } from '../Colors';
+import { DECKS_DATA_KEY, red, blue, green } from '../Variables';
 import {
   Text,
   View,
@@ -26,7 +26,7 @@ export default class AddDeck extends React.Component {
 
   storDeck = async title => {
     if (title) {
-      const decksData = await AsyncStorage.getItem('Data:Deckslist');
+      const decksData = await AsyncStorage.getItem(DECKS_DATA_KEY);
       const oldDeck = JSON.parse(decksData);
       const newDeck = {
         [title]: {
@@ -36,7 +36,7 @@ export default class AddDeck extends React.Component {
       };
       const finalDecks = Object.assign(oldDeck, newDeck);
 
-      await AsyncStorage.setItem('Data:Deckslist', JSON.stringify(finalDecks));
+      await AsyncStorage.setItem(DECKS_DATA_KEY, JSON.stringify(finalDecks));
     } else {
       this.setState({ error: true });
     }
