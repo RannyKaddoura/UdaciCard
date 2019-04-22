@@ -83,14 +83,14 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     marginBottom: 10,
     marginTop: 10,
-    marginLeft: 60,
-    width: 300,
-    height: 200
+    marginRight: 20,
+    marginLeft: 20,
+    height: 150
   },
   textContainer: {
     alignItems: 'center',
     flex: 1,
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
   text: {
     marginTop: 10,
