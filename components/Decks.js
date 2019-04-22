@@ -5,17 +5,25 @@ import {
   TouchableOpacity,
   View,
   StyleSheet,
-  AsyncStorage
+  AsyncStorage,
+  Animated
 } from 'react-native';
 import { DECKS_DATA_KEY, lightGray, white, black } from '../Variables';
 
 export default class Decks extends React.Component {
   state = {
+    opacity: new Animated.Value(0),
+    width: new Animated.Value(0),
+    height: new Animated.Value(0),
     decksData: null,
     token: null
   };
   componentDidMount() {
+    const { opacity, width, height } = this.state;
     this.getData();
+    Animated.timing(opacity, { toValue: 1, duration: 2000 }).start();
+    Animated.spring(width, { toValue: 550, speed: 3 }).start();
+    Animated.timing(height, { toValue: 200, speed: 3 }).start();
   }
 
   getData = async () => {
@@ -32,8 +40,8 @@ export default class Decks extends React.Component {
   }
 
   render() {
-    const { decksData } = this.state;
-    console.log('Decks decksData', decksData);
+    const { decksData, opacity } = this.state;
+    
     return (
       <ScrollView style={styles.container}>
         {decksData !== null &&
@@ -47,12 +55,13 @@ export default class Decks extends React.Component {
                 })
               }
               style={styles.fullWidthButton}>
-              <View style={styles.textContainer}>
-                <Text style={styles.text}>Deck : {title}</Text>
+              <Animated.View
+                style={[styles.textContainer, { opacity }]}>
+                <Text style={styles.text}>Deck Name: {title}</Text>
                 <Text style={styles.text}>
-                  Cards :{decksData[title].questions.length}
+                  Cards Number : {decksData[title].questions.length}
                 </Text>
-              </View>
+              </Animated.View>
             </TouchableOpacity>
           ))}
       </ScrollView>
@@ -68,7 +77,6 @@ const styles = StyleSheet.create({
   fullWidthButton: {
     backgroundColor: lightGray,
     flexDirection: 'row',
-
     justifyContent: 'center',
     alignItems: 'center',
     borderColor: black,
@@ -86,6 +94,7 @@ const styles = StyleSheet.create({
   },
   text: {
     marginTop: 10,
+    fontSize: 20,
     marginBottom: 10
   },
   review: {

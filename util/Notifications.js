@@ -1,8 +1,7 @@
-import React from 'react';
 import { AsyncStorage } from 'react-native';
-import { Permissions, Notifications } from 'expo';
+import { Constants, Permissions, Notifications } from 'expo';
 
-const NOTIFICATIONS_KEY = 'Udacicards:Notification';
+const NOTIFICATIONS_KEY = 'Ujkdasd:asdlasd';
 
 export function clearLocalNotifications() {
   return AsyncStorage.removeItem(NOTIFICATIONS_KEY).then(
@@ -27,12 +26,15 @@ function createNotification() {
 }
 
 export function setLocalNotification() {
+  
   AsyncStorage.getItem(NOTIFICATIONS_KEY)
     .then(JSON.parse)
     .then(data => {
-      if (data === null) {
+      
+      if (data !== null) {
         Permissions.askAsync(Permissions.NOTIFICATIONS).then(({ status }) => {
-          if (status === 'granted') {
+          if (Constants.isDevice && status === 'granted') {
+            
             Notifications.cancelAllScheduledNotificationsAsync();
 
             let tomorrow = new Date();
