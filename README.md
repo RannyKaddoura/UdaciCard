@@ -35,7 +35,7 @@ you will see in your reminal somthing like
   </a>
 </p>
 
- - you will be able to run you application if you use the QR code reader on your mobile expo version
+ - you will be able to run you application if you use the QR code reader in expo on your mobile.
 
 
 
